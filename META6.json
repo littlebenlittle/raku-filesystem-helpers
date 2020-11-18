@@ -1,0 +1,20 @@
+{
+  "meta-version": "0",
+  "name": "FileSystem::Helpers",
+  "version": "0.0.0",
+  "auth": "github:littlebenlittle",
+  "description": "helper functions for file systems",
+  "source-url": "github.com/littlebenlittle/raku-filesystem-helpers",
+  "perl": "6.d",
+  "author": "Ben Little <ben.little@benlittle.dev>",
+  "tags": [
+    "helpers",
+    "filesystem",
+		"files",
+		"temp"
+  ],
+  "license": "Artistic-2.0",
+  "provides": {
+    "FileSystem::Helpers": "lib/FileSystem/Helpers.rakumod"
+  }
+}
