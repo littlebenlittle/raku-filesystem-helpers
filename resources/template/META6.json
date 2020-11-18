@@ -1,0 +1,18 @@
+{
+  "meta-version": "0",
+  "name": "TODO",
+  "version": "0.0.0",
+  "auth": "github:littlebenlittle",
+  "description": "TODO",
+  "source-url": "TODO",
+  "perl": "6.d",
+  "author": "Ben Little <ben.little@benlittle.dev>",
+  "tags": [
+    "TODO",
+    "TODO"
+  ],
+  "license": "Artistic-2.0",
+  "provides": {
+    "TODO": "TODO"
+  }
+}

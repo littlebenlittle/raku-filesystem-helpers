@@ -33,3 +33,24 @@ sub copy-dir(
     }
 }
 
+sub generate-dir(
+    IO() $template-dir,
+    IO() $target-dir,
+    *%args
+) is export {
+    use Stache::Renderer;
+    mkdir $target-dir unless $target-dir.e;
+    for $template-dir.dir {
+        my $dest = $target-dir.add: $_.basename;
+        given $_ {
+            when :d {
+                say "expanding $dest";
+                generate-dir($_, $dest, |%args);
+            }
+            when :f {
+                say 'writing to ' ~ $dest.Str;
+                $dest.spurt: Stache::Renderer::basic($_.slurp, |%args);
+            }
+        }
+    }
+}

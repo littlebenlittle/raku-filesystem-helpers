@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "auth": "github:littlebenlittle",
   "description": "helper functions for file systems",
-  "source-url": "github.com/littlebenlittle/raku-filesystem-helpers",
+  "source-url": "https://github.com/littlebenlittle/raku-filesystem-helpers.git",
   "perl": "6.d",
   "author": "Ben Little <ben.little@benlittle.dev>",
   "tags": [
