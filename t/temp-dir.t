@@ -4,18 +4,6 @@ use Test;
 
 use FileSystem::Helpers;
 
-# class Unit {
-# 	has $.name;
-# }
-# 
-# my @units = [
-#     Unit.new(name => 'not implemented'),
-# ];
-# 
-# plan @units.elems;
-# 
-# ok False, .name for @units;
-
 my $uid = sprintf '%d%d%d%d', (0..9).pick: 4;
 my $tmpdir = $*TMPDIR.add("filesysem-test-$uid");
 mkdir $tmpdir;

@@ -1,5 +1,5 @@
 
-unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.0.0>;
+unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.1.0>;
 
 sub temp-dir (
     &code,
@@ -12,3 +12,24 @@ sub temp-dir (
     LEAVE { run « rm -r $*tmpdir »  if $*tmpdir.defined }
     &code()
 }
+
+sub copy-dir(
+    IO() $from,
+    IO() $to,
+) is export {
+    die "not a directory: $from" unless $from.d;
+    mkdir $to unless $to.e;
+    for $from.dir {
+        my $dest = $to.add($_.basename);
+        given $_ {
+            when :d {
+                mkdir $dest;
+                copy-dir $_, $dest;
+            }
+            default {
+                $_.copy: $dest;
+            }
+        }
+    }
+}
+
