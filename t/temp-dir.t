@@ -11,7 +11,7 @@ END { run « rm -r $tmpdir »  if $tmpdir.defined }
 
 plan 3;
 my $created-dir;
-temp-dir({
+FileSystem::Helpers::temp-dir({
     cmp-ok $*tmpdir.absolute, '~~', / 'filesysem-test-' \d ** 4..* /, 'root name matches';
     cmp-ok $*tmpdir.absolute, '~~', / 'some-dir-' \d ** 4..* /, 'dir name matches';
     $created-dir = $*tmpdir.absolute.IO;
