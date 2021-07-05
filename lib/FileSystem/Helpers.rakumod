@@ -1,5 +1,5 @@
 
-unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.1.0>;
+unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.1.1>;
 
 our sub temp-dir (
     &code,
@@ -16,6 +16,7 @@ our sub temp-dir (
 our sub copy-dir(
     IO() $from,
     IO() $to,
+    :&mod,
 ) {
     die "not a directory: $from" unless $from.d;
     mkdir $to unless $to.e;
@@ -24,10 +25,15 @@ our sub copy-dir(
         given $_ {
             when :d {
                 mkdir $dest;
-                copy-dir $_, $dest;
+                copy-dir $_, $dest, :mod(&mod);
             }
             default {
-                $_.copy: $dest;
+                if &mod.defined {
+                    my $content = &mod($_);
+                    $dest.spurt: $content;
+                } else {
+                    $_.copy: $dest;
+                }
             }
         }
     }
