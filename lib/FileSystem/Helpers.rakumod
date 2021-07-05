@@ -1,5 +1,5 @@
 
-unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.1.1>;
+unit package FileSystem::Helpers:auth<github:littlebenlittle>:ver<0.1.2>;
 
 our sub temp-dir (
     &code,
@@ -30,7 +30,7 @@ our sub copy-dir(
             default {
                 if &mod.defined {
                     my $content = &mod($_);
-                    $dest.spurt: $content;
+                    $dest.spurt: $content if $content.defined;
                 } else {
                     $_.copy: $dest;
                 }
